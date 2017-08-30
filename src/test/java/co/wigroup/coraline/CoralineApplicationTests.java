@@ -11,6 +11,7 @@ public class CoralineApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		assert false;
 	}
 
 }
