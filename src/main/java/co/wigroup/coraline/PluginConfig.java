@@ -2,7 +2,7 @@ package co.wigroup.coraline;
 
 import com.eviware.soapui.plugins.PluginAdapter;
 import com.eviware.soapui.plugins.PluginConfiguration;
-
+import com.eviware.soapui.support.UISupport;
 
 @PluginConfiguration (
         groupId = "co.wigroup",
