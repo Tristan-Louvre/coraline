@@ -1,7 +1,7 @@
 package io.louvre.templater.actions;
 
-
 import com.eviware.soapui.impl.WorkspaceImpl;
+import com.eviware.soapui.impl.wsdl.WsdlProject;
 import com.eviware.soapui.plugins.ActionConfiguration;
 import com.eviware.soapui.support.StringUtils;
 import com.eviware.soapui.support.UISupport;
@@ -14,25 +14,25 @@ import com.eviware.x.form.support.AForm;
 
 import java.io.File;
 
-import static com.eviware.soapui.support.action.ActionGroups.WORKSPACE_ACTIONS;
+import static com.eviware.soapui.support.action.ActionGroups.INTERFACE_ACTIONS;
 
 
 @ActionConfiguration(
-        actionGroup = WORKSPACE_ACTIONS,
-        afterAction = "ClearWorkspaceAction",
-        keyStroke = "T",
-        separatorBefore = true,
+        actionGroup = INTERFACE_ACTIONS,
+        afterAction = "CreateWsdlDocumentationAction",
+//        keyStroke = "menu T",
+//        separatorBefore = true,
         separatorAfter = true
 )
-public class ManageTemplatesAction extends AbstractSoapUIAction<WorkspaceImpl> {
+public class GenerateTemplatedTestCases extends AbstractSoapUIAction<WorkspaceImpl> { // The value between the arrow braces is not correct
     private XFormDialog dialog;
 
-    public ManageTemplatesAction() {
+    public GenerateTemplatedTestCases() {
         super("Manage TestCase Templates", "Manage TestCase templates in Ready! API");
     }
 
     @Override
-    public void perform(WorkspaceImpl workspace, Object param) {
+    public void perform(WorkspaceImpl workspace, Object param) { // WorkspaceImpl may not be correct
         if (dialog == null) {
             dialog = ADialogBuilder.buildDialog(Form.class);
         } else {
@@ -65,4 +65,3 @@ public class ManageTemplatesAction extends AbstractSoapUIAction<WorkspaceImpl> {
         String POSTMAN_COLLECTION_FILE = "Postman Collection";
     }
 }
-

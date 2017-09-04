@@ -28,7 +28,7 @@ repositories {
 //}
 
 ext {
-	readyApiVersion = '2.0.0'
+	readyApiVersion = '2.1.0'
 }
 
 dependencies {
@@ -39,7 +39,7 @@ dependencies {
 //	compile 'org.projectlombok:lombok'
 //	compile 'org.springframework.boot:spring-boot-starter-templater'
 //	compile 'org.springframework.restdocs:spring-restdocs-mockmvc'
-	compile group: 'commons-logging', name: 'commons-logging', version: '1.1.1'
+//	compile group: 'commons-logging', name: 'commons-logging', version: '1.1.1'
 }
 
 
