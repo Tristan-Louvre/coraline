@@ -23,4 +23,9 @@ dependencies {
 	compile "com.smartbear:ready-api-projects:${readyApiVersion}"
 }
 
-
+task copyArtifact {
+	copy{
+		from "src\\main\\java\\io\\louvre\\templater\\groovy\\templateGen.groovy"
+		into "C:\\# - Stuff\\02 - Dev Code\\Code Work\\wigroup-test-groovy-scripts"
+	}
+}
