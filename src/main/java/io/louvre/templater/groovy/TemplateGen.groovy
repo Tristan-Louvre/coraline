@@ -45,7 +45,6 @@ class TemplateGen {
         if (methods != null) {
             return methods
         }
-
     }
 
     def static sortMethods(methods) {

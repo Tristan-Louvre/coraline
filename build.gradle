@@ -13,12 +13,13 @@ repositories {
 }
 
 ext {
-	readyApiVersion = '2.2.0'
+	readyApiVersion = '2.3.0'
 }
 
 dependencies {
 	compile group: 'org.codehaus.gmaven.runtime', name: 'gmaven-runtime-1.8', version:'1.5'
 	compile "com.smartbear:ready-api-core:${readyApiVersion}"
+	compile "com.smartbear:ready-api-soapui-ng:${readyApiVersion}"
 	compile "com.smartbear:ready-api-soapui-pro:${readyApiVersion}"
 	compile "com.smartbear:ready-api-projects:${readyApiVersion}"
 }
