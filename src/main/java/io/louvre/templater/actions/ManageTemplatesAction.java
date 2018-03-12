@@ -1,30 +1,68 @@
-package io.louvre.templater.actions;
-
-
-import com.eviware.soapui.model.ModelItem;
-import com.eviware.soapui.ready.LicenseCheckUtils;
-import com.eviware.soapui.support.UISupport;
-import com.eviware.soapui.support.action.support.AbstractSoapUIAction;
-
-import com.google.inject.Inject;
-
-public class ManageTemplatesAction extends AbstractSoapUIAction<ModelItem> {
-    public static final String TOOLBAR_BUTTON_CAPTION = "TEMPLATES";
-    public static final String TOOLBAR_ICON_PATH = "io/louvre/templater/icons/placeholder.png";
-    public static final String TOOLBAR_ACTION_DESCRIPTION = "Manage Project Templates";
-    public static final String TOOLBAR_ACTION_KEYSTROKE = "T";
-
-    @Inject
-    public ManageTemplatesAction() {
-        super(TOOLBAR_BUTTON_CAPTION);
-    }
-
-    @Override
-    public void perform(ModelItem modelItem, Object o) {
-        if (!LicenseCheckUtils.userHasAccessToSoapUING()) {
-            UISupport.showErrorMessage("To use this feature, you need a SoapUI NG Pro license.\nYou can request a Pro trial at SmartBear.com.");
-            return;
-        }
-    }
-}
+//package io.louvre.templater.actions;
+//
+//
+//import com.eviware.soapui.impl.WorkspaceImpl;
+//import com.eviware.soapui.plugins.ActionConfiguration;
+//import com.eviware.soapui.support.StringUtils;
+//import com.eviware.soapui.support.UISupport;
+//import com.eviware.soapui.support.action.support.AbstractSoapUIAction;
+//import com.eviware.x.form.XFormDialog;
+//import com.eviware.x.form.support.ADialogBuilder;
+//import com.eviware.x.form.support.AField;
+//import com.eviware.x.form.support.AField.AFieldType;
+//import com.eviware.x.form.support.AForm;
+//
+//import java.io.File;
+//
+//import static com.eviware.soapui.support.action.ActionGroups.WORKSPACE_ACTIONS;
+//
+//
+//@ActionConfiguration(
+//        actionGroup = WORKSPACE_ACTIONS,
+//        afterAction = "ClearWorkspaceAction",
+//        keyStroke = "T",
+//        separatorBefore = true,
+//        separatorAfter = true
+//)
+//public class ManageTemplatesAction extends AbstractSoapUIAction<WorkspaceImpl> {
+//    private XFormDialog dialog;
+//
+//    public ManageTemplatesAction() {
+//        super("Manage TestCase Templates", "Manage TestCase templates in Ready! API");
+//    }
+//
+//    @Override
+//    public void perform(WorkspaceImpl workspace, Object param) {
+//        if (dialog == null) {
+//            dialog = ADialogBuilder.buildDialog(Form.class);
+//        } else {
+//            dialog.setValue(Form.POSTMAN_COLLECTION_FILE, "");
+//        }
+//
+//        while (dialog.show()) {
+//            try {
+//                String fieldValue = dialog.getValue(Form.POSTMAN_COLLECTION_FILE);
+//                if (StringUtils.hasContent(fieldValue)) {
+//                    String filePath = fieldValue.trim();
+//                    if (StringUtils.hasContent(filePath)) {
+//                        if (new File(filePath).exists()) {
+//                            //PostmanImporter importer = new PostmanImporter(new GuiTestCreator());
+//                            //importer.importPostmanCollection(workspace, filePath);
+//                            return;
+//                        }
+//                        break;
+//                    }
+//                }
+//            } catch (Exception ex) {
+//                UISupport.showErrorMessage(ex);
+//            }
+//        }
+//    }
+//
+//    @AForm(name = "hi1", description = "hi2")
+//    public interface Form {
+//        @AField(name = "hi3", description = "hi4", type = AFieldType.FILE)
+//        String POSTMAN_COLLECTION_FILE = "Postman Collection";
+//    }
+//}
 

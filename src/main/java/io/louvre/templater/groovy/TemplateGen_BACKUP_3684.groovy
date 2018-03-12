@@ -1,5 +1,9 @@
 package io.louvre.templater.groovy
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> Stable
 class TemplateGen {
 
     def static main (String definitionUrl, String definitionType, log) {
@@ -72,4 +76,7 @@ class TemplateGen {
         //set input variables
     }
 }
+<<<<<<< HEAD
+=======
 
+>>>>>>> Stable
