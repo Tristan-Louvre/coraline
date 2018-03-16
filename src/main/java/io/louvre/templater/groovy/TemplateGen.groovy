@@ -7,6 +7,8 @@ import java.nio.charset.Charset
 import java.nio.file.Path
 import java.nio.file.Paths
 
+import static java.util.UUID.*
+
 class TemplateGen {
 
     def static main (File templateFile, File templateMethods, File elementOrder, log) {
@@ -70,6 +72,7 @@ class TemplateGen {
         //return sorted method names with .xml appended
     }
 
+
     def static createTemplates(projectDirectory, methodListFile, templateFile, testSuiteName, context, log) {
         def line
         def source = new File(projectDirectory+templateFile)
@@ -77,28 +80,34 @@ class TemplateGen {
         def fileExtension = ".xml"
         def elementOrderFile = "element.order"
 
-
-        //confirm sorted method == full method
-        //loop through array of full method names (.xml) [Ideal world: See if method name file already exists]
-
         def elementFile = new File(projectDirectory+testSuiteName+elementOrderFile)
         elementFile << elementSource.text + fileExtension
 
         File file = new File(projectDirectory+methodListFile)
         file.withReader { reader ->
             while ((line = reader.readLine())!=null) {
-                log.info line
-                //make file
+
+                def propertyMap = [
+                        testcase_name: ['${TESTCASE_NAME}', line],
+                        testcase_uuid: ['${TESTCASE_UUID}', randomUUID()],
+                        datasource_uuid: ['${DATASOURCE_UUID}', randomUUID()],
+                        switch_on_uuid: ['${SWITCH_ON_UUID}', randomUUID()],
+                        data_gen_uuid: ['${DATA_GEN_UUID}', randomUUID()],
+                        boundary_gen_uuid: ['${BOUNDARY_GEN_UUID}', randomUUID()],
+                        jdbc_assertions_uuid: ['${JDBC_ASSERTIONS_UUID}', randomUUID()],
+                        script_assertions_uuid: ['${SCRIPT_ASSERTIONS_UUID}', randomUUID()],
+                        switch_off_uuid: ['${SWITCH_OFF_UUID}', randomUUID()],
+                        datasource_loop_uuid: ['${DATASOURCE_LOOP_UUID}', randomUUID()],
+                ]
+
                 def destination = new File(projectDirectory+testSuiteName+line+fileExtension)
                 destination << source.text
+
+                propertyMap.each {
+                    destination.text = destination.text.replace(it.value[0].toString(), it.value[1].toString())
+                }
             }
         }
-
-
-        //create files
-        //copy template over
-        //generate uuid and set all properties with it
-        //set input variables
     }
 }
 
